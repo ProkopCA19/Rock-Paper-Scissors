@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class HumanPlayer:Player
+    class Human:Player
     {
-        
+       
+        public Human()
+        {
+
+        }
     }
 }

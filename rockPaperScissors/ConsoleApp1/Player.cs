@@ -8,49 +8,56 @@ namespace ConsoleApp1
 {
     public class Player
     {
-        protected string numberChoice;
-        private int numberOfMatchWins;
-        protected string playerChoice;
+      //member variables
+
+        public int numberOfMatchWins;
+        public string playerChoice;
+        protected List<string> gestures = new List<string>() {"rock", "paper", "scissors", "lizard", "spock" };
+
+
 
         //constructor
         public Player()
         {
-            
+         
         }
+
+
 
         //methods
 
-        public virtual void MakesChoice()
+        public virtual string MakesChoice()
         {
             Console.WriteLine("Please choose a number 1 through 5 to make your move");
-            numberChoice = Console.ReadLine();
             
 
-            switch(numberChoice)
+            switch(Console.ReadLine())
             {
                 case "1":
-                    playerChoice = "rock"; 
+                    playerChoice = gestures[0];
                     Console.WriteLine("You chose " + playerChoice);
-                        break;
+                    return playerChoice;
                 case "2":
-                    playerChoice = "paper";
+                    playerChoice = gestures[1];
                     Console.WriteLine("You chose " + playerChoice);
-                    break;
+                    return playerChoice;
                 case "3":
-                    playerChoice = "scissors";
+                    playerChoice = gestures[2];
                     Console.WriteLine("You chose " + playerChoice);
-                    break;
+                    return playerChoice;
                 case "4":
-                    playerChoice = "lizard";
+                    playerChoice = gestures[3];
                     Console.WriteLine("You chose " + playerChoice);
-                    break;
+                    return playerChoice;
                 case "5":
-                    playerChoice = "spock";
+                    playerChoice = gestures[4];
                     Console.WriteLine("You chose " + playerChoice);
-                    break;
+                    return playerChoice;
                 default:
                     Console.WriteLine("That is not a valid choice, try again");
-                    break;
+                    return MakesChoice();
+                    
+                   
 
             }
 
