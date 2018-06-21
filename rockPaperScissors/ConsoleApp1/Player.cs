@@ -8,14 +8,14 @@ namespace ConsoleApp1
 {
     public class Player
     {
-        string numberChoice;
-        string numberOfMatchWins;
-        string playerChoice;
+        protected string numberChoice;
+        private int numberOfMatchWins;
+        protected string playerChoice;
 
         //constructor
         public Player()
         {
-
+            
         }
 
         //methods

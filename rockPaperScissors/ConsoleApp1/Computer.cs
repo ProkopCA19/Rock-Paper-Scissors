@@ -9,7 +9,7 @@ namespace ConsoleApp1
     class ComputerPlayer:Player
     {
         //member variables
-        
+
 
         //constructor
 
@@ -18,9 +18,9 @@ namespace ConsoleApp1
         //methods
         public override void MakesChoice()
         {
-            base.MakesChoice();
+            
             Random rnd = new Random();
-            numberChoice = rnd.Next(1, 6);
+            numberChoice = rnd.Next(1, 6).ToString();
 
             switch (numberChoice)
             {
@@ -49,5 +49,6 @@ namespace ConsoleApp1
                     break;
 
             }
+        }
     }
 }
