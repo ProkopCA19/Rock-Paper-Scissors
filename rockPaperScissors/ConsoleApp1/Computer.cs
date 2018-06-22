@@ -8,15 +8,7 @@ namespace ConsoleApp1
 {
     class Computer : Player
     {
-        //member variables
 
-
-        //constructor
-        public Computer()
-        {
-            
-        }
-   
 
         //methods
         public override string MakesChoice()

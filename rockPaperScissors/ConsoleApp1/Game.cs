@@ -8,32 +8,66 @@ namespace ConsoleApp1
 {
     class Game
     {
-        //member variables
-        Player player1 = new Human();
-        Player opponent = new Player();
+      
+        Player you = new Human();
+        Player opponent;
 
 
-
-        //constructor
-        public Game()
+ 
+        public void RunGame()
         {
-            
-
-
-
-
-
-
-
-
+            DisplayRules();
+            DetermineOpponent();
+            while (CalculatesGameWinner(you, opponent))
+            {
+                Console.WriteLine("You chose:  " + you.MakesChoice());
+                Console.WriteLine("Your opponent chose:  " + opponent.MakesChoice());
+                CompareGestures(you, opponent);
+            }
+            PlayAgain();
         }
 
 
+        public void PlayAgain()
+        {
+            Console.WriteLine("Press 1 to play again or press 2 to quit");
 
-        //methods
+            switch(Console.ReadLine())
+            {
+                case "1":
+                    RunGame();
+                    break;
+                case "2":
+                    Console.WriteLine("Goodbye :(");
+                    break;
+                default:
+                    Console.WriteLine("Not a valid option, try again");
+                    PlayAgain();
+                    break;
+            }
+            
+        }
+        public void DisplayRules()
+        {
+            Console.WriteLine("Welcome to rock, paper, scissors, lizard, spock! The rules are as follows:");
+            Console.WriteLine("rock crushes scissors");
+            Console.WriteLine("scissors cuts paper");
+            Console.WriteLine("paper covers rock");
+            Console.WriteLine("rock crushes lizard");
+            Console.WriteLine("lizard poisons Spock");
+            Console.WriteLine("Spock smashes scissors");
+            Console.WriteLine("scissors decapitates lizard");
+            Console.WriteLine("lizard eats paper");
+            Console.WriteLine("paper disproves Spock");
+            Console.WriteLine("Spock vaporizes rock");
+            Console.WriteLine("1 = rock");
+            Console.WriteLine("2 = paper");
+            Console.WriteLine("3 = scissors");
+            Console.WriteLine("4 = lizard");
+            Console.WriteLine("5 = spock");
+        }
 
-
-        public Player DetermineOpponent()
+        public void DetermineOpponent()
         {
             Console.WriteLine("Press 1 to play against another person or press 2 to play against the computer");
             string opponentChoice = Console.ReadLine();
@@ -41,17 +75,17 @@ namespace ConsoleApp1
             if(opponentChoice == "1")
             {
                 opponent = new Human();
-                return opponent;
+               
             }
             else if(opponentChoice == "2")
             {
                 opponent = new Computer();
-                return opponent;
+                
             }
             else
             {
                 Console.WriteLine("Not a valid choice, try again");
-                return DetermineOpponent();
+                DetermineOpponent();
             }
         }
 
@@ -113,7 +147,7 @@ namespace ConsoleApp1
                 }
                 else if (you.playerChoice == "scissors" && opponent.playerChoice == "lizard")
                 {
-                    Console.WriteLine("Scissors decapitate lizard, you wins this round");
+                    Console.WriteLine("Scissors decapitate lizard, you win this round");
                     you.numberOfMatchWins++;
                 }
                 else if (you.playerChoice == "scissors" && opponent.playerChoice == "spock")
@@ -141,6 +175,7 @@ namespace ConsoleApp1
                     Console.WriteLine("Lizard poisons spock, you win this round");
                     you.numberOfMatchWins++;
                 }
+
                 else if (you.playerChoice == "spock" && opponent.playerChoice == "rock")
                 {
                     Console.WriteLine("Spock vaporizes rock, you win this round");
@@ -169,11 +204,13 @@ namespace ConsoleApp1
         {
             if (you.numberOfMatchWins >= 2)
             {
+                Console.WriteLine("");
                 Console.WriteLine("You win the game!");
                 return false;
             }
             if (opponent.numberOfMatchWins >= 2)
             {
+                Console.WriteLine("");
                 Console.WriteLine("Your opponent wins the game!");
                 return false;
             }

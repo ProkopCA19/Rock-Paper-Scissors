@@ -9,9 +9,6 @@ namespace ConsoleApp1
     class Human:Player
     {
        
-        public Human()
-        {
-
-        }
+       
     }
 }
