@@ -18,7 +18,8 @@ namespace ConsoleApp1
         {
             DisplayRules();
             DetermineOpponent();
-            while (CalculatesGameWinner(you, opponent))
+            
+            while (DetermineIfPlayAgain())
             {
                 Console.WriteLine("You chose:  " + you.MakesChoice());
                 Console.WriteLine("Your opponent chose:  " + opponent.MakesChoice());
@@ -32,9 +33,10 @@ namespace ConsoleApp1
         {
             Console.WriteLine("Press 1 to play again or press 2 to quit");
 
-            switch(Console.ReadLine())
+            switch (Console.ReadLine())
             {
                 case "1":
+                    Console.Clear();
                     RunGame();
                     break;
                 case "2":
@@ -45,7 +47,6 @@ namespace ConsoleApp1
                     PlayAgain();
                     break;
             }
-            
         }
         public void DisplayRules()
         {
@@ -200,7 +201,7 @@ namespace ConsoleApp1
         }
         
        
-        public bool CalculatesGameWinner(Player you, Player opponent)
+        public bool DetermineIfPlayAgain(/*Player you, Player opponent*/)
         {
             if (you.numberOfMatchWins >= 2)
             {
