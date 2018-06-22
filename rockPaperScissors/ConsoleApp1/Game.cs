@@ -10,7 +10,7 @@ namespace ConsoleApp1
     {
         //member variables
         Player player1 = new Human();
-        Player player2;
+        Player opponent = new Player();
 
 
 
@@ -18,6 +18,14 @@ namespace ConsoleApp1
         public Game()
         {
             
+
+
+
+
+
+
+
+
         }
 
 
@@ -25,151 +33,151 @@ namespace ConsoleApp1
         //methods
 
 
-        public Player DecidesHumanOrComputer()
+        public Player DetermineOpponent()
         {
             Console.WriteLine("Press 1 to play against another person or press 2 to play against the computer");
-            string opponent = Console.ReadLine();
+            string opponentChoice = Console.ReadLine();
 
-            if(opponent == "1")
+            if(opponentChoice == "1")
             {
-                player2 = new Human();
-                return player2;
+                opponent = new Human();
+                return opponent;
             }
-            else if(opponent == "2")
+            else if(opponentChoice == "2")
             {
-                player2 = new Computer();
-                return player2;
+                opponent = new Computer();
+                return opponent;
             }
             else
             {
                 Console.WriteLine("Not a valid choice, try again");
-                return DecidesHumanOrComputer();
+                return DetermineOpponent();
             }
         }
 
-        public void CompareGestures()
-        {
-            while (player1.numberOfMatchWins < 2 || player2.numberOfMatchWins < 2)
-            {
-
-                if (player1.playerChoice == player2.playerChoice)
+        public void CompareGestures(Player you, Player opponent)
+        {           
+                if (you.playerChoice == opponent.playerChoice)
                 {
                     Console.WriteLine("Tie");
                 }
-                else if (player1.playerChoice == "rock" && player2.playerChoice == "scissors")
+                else if (you.playerChoice == "rock" && opponent.playerChoice == "scissors")
                 {
-                    Console.WriteLine("rock crushes scissors, player 1 wins this round");
-                    player1.numberOfMatchWins++;
+                    Console.WriteLine("rock crushes scissors, you win this round");
+                    you.numberOfMatchWins++;
                 }
-                else if (player1.playerChoice == "rock" && player2.playerChoice == "paper")
+                else if (you.playerChoice == "rock" && opponent.playerChoice == "paper")
                 {
-                    Console.WriteLine("Paper covers rock, player 2 wins this round");
-                    player2.numberOfMatchWins++;
+                    Console.WriteLine("Paper covers rock, your opponent wins this round");
+                    opponent.numberOfMatchWins++;
                 }
-                else if (player1.playerChoice == "rock" && player2.playerChoice == "lizard")
+                else if (you.playerChoice == "rock" && opponent.playerChoice == "lizard")
                 {
-                    Console.WriteLine("rock crushes lizard, player 1 wins this round");
-                    player1.numberOfMatchWins++;
+                    Console.WriteLine("rock crushes lizard, you win this round");
+                    you.numberOfMatchWins++;
                 }
-                else if (player1.playerChoice == "rock" && player2.playerChoice == "spock")
+                else if (you.playerChoice == "rock" && opponent.playerChoice == "spock")
                 {
-                    Console.WriteLine("Spock vaporizes rock, player 2 wins this round");
-                    player2.numberOfMatchWins++;
+                    Console.WriteLine("Spock vaporizes rock, your opponent wins this round");
+                    opponent.numberOfMatchWins++;
                 }
-                else if (player1.playerChoice == "paper" && player2.playerChoice == "scissors")
+                else if (you.playerChoice == "paper" && opponent.playerChoice == "scissors")
                 {
-                    Console.WriteLine("Scissors cuts paper, player 2 wins this round");
-                    player2.numberOfMatchWins++;
+                    Console.WriteLine("Scissors cuts paper, your opponent wins this round");
+                    opponent.numberOfMatchWins++;
                 }
-                else if (player1.playerChoice == "paper" && player2.playerChoice == "rock")
+                else if (you.playerChoice == "paper" && opponent.playerChoice == "rock")
                 {
-                    Console.WriteLine("Paper covers rock, player player 1 wins this round");
-                    player1.numberOfMatchWins++;
+                    Console.WriteLine("Paper covers rock, you win this round");
+                    you.numberOfMatchWins++;
                 }
-                else if (player1.playerChoice == "paper" && player2.playerChoice == "lizard")
+                else if (you.playerChoice == "paper" && opponent.playerChoice == "lizard")
                 {
-                    Console.WriteLine("Lizard eats paper, player 2 wins this round");
-                    player2.numberOfMatchWins++;
+                    Console.WriteLine("Lizard eats paper, your opponent wins this round");
+                    opponent.numberOfMatchWins++;
                 }
-                else if (player1.playerChoice == "paper" && player2.playerChoice == "spock")
+                else if (you.playerChoice == "paper" && opponent.playerChoice == "spock")
                 {
-                    Console.WriteLine("Paper disproves spockd, player 1 wins this round");
-                    player1.numberOfMatchWins++;
+                    Console.WriteLine("Paper disproves spockd, you win this round");
+                    you.numberOfMatchWins++;
                 }
-                else if (player1.playerChoice == "scissors" && player2.playerChoice == "rock")
+                else if (you.playerChoice == "scissors" && opponent.playerChoice == "rock")
                 {
-                    Console.WriteLine("Rock crushes scissors, player 2 wins this round");
-                    player2.numberOfMatchWins++;
+                    Console.WriteLine("Rock crushes scissors, your opponent wins this round");
+                    opponent.numberOfMatchWins++;
                 }
-                else if (player1.playerChoice == "scissors" && player2.playerChoice == "paper")
+                else if (you.playerChoice == "scissors" && opponent.playerChoice == "paper")
                 {
-                    Console.WriteLine("Scissors cuts paper, player 1 wins this round");
-                    player1.numberOfMatchWins++;
+                    Console.WriteLine("Scissors cuts paper, you win this round");
+                    you.numberOfMatchWins++;
                 }
-                else if (player1.playerChoice == "scissors" && player2.playerChoice == "lizard")
+                else if (you.playerChoice == "scissors" && opponent.playerChoice == "lizard")
                 {
-                    Console.WriteLine("Scissors decapitate lizard, player 1 wins this round");
-                    player1.numberOfMatchWins++;
+                    Console.WriteLine("Scissors decapitate lizard, you wins this round");
+                    you.numberOfMatchWins++;
                 }
-                else if (player1.playerChoice == "scissors" && player2.playerChoice == "spock")
+                else if (you.playerChoice == "scissors" && opponent.playerChoice == "spock")
                 {
-                    Console.WriteLine("Spock smashes scissors, player 2 wins this round");
-                    player2.numberOfMatchWins++;
+                    Console.WriteLine("Spock smashes scissors, your opponent wins this round");
+                    opponent.numberOfMatchWins++;
                 }
-                else if (player1.playerChoice == "lizard" && player2.playerChoice == "rock")
+                else if (you.playerChoice == "lizard" && opponent.playerChoice == "rock")
                 {
-                    Console.WriteLine("Rock crushes lizard, player 2 wins this round");
-                    player2.numberOfMatchWins++;
+                    Console.WriteLine("Rock crushes lizard, your opponent wins this round");
+                    opponent.numberOfMatchWins++;
                 }
-                else if (player1.playerChoice == "lizard" && player2.playerChoice == "paper")
+                else if (you.playerChoice == "lizard" && opponent.playerChoice == "paper")
                 {
-                    Console.WriteLine("Lizard eats paper, player 1 wins this round");
-                    player1.numberOfMatchWins++;
+                    Console.WriteLine("Lizard eats paper, you win this round");
+                    you.numberOfMatchWins++;
                 }
-                else if (player1.playerChoice == "lizard" && player2.playerChoice == "scissors")
+                else if (you.playerChoice == "lizard" && opponent.playerChoice == "scissors")
                 {
-                    Console.WriteLine("Scissors decapitates lizard, player 2 wins this round");
-                    player2.numberOfMatchWins++;
+                    Console.WriteLine("Scissors decapitates lizard, your opponent wins this round");
+                    opponent.numberOfMatchWins++;
                 }
-                else if (player1.playerChoice == "lizard" && player2.playerChoice == "spock")
+                else if (you.playerChoice == "lizard" && opponent.playerChoice == "spock")
                 {
-                    Console.WriteLine("Lizard poisons spock, player 1 wins this round");
-                    player1.numberOfMatchWins++;
+                    Console.WriteLine("Lizard poisons spock, you win this round");
+                    you.numberOfMatchWins++;
                 }
-                else if (player1.playerChoice == "spock" && player2.playerChoice == "rock")
+                else if (you.playerChoice == "spock" && opponent.playerChoice == "rock")
                 {
-                    Console.WriteLine("Spock vaporizes rock, player 1 wins this round");
-                    player1.numberOfMatchWins++;
+                    Console.WriteLine("Spock vaporizes rock, you win this round");
+                    you.numberOfMatchWins++;
                 }
-                else if (player1.playerChoice == "spock" && player2.playerChoice == "paper")
+                else if (you.playerChoice == "spock" && opponent.playerChoice == "paper")
                 {
-                    Console.WriteLine("Paper disproves spock, player 2 wins this round");
-                    player2.numberOfMatchWins++;
+                    Console.WriteLine("Paper disproves spock, your opponent wins this round");
+                    opponent.numberOfMatchWins++;
                 }
-                else if (player1.playerChoice == "spock" && player2.playerChoice == "scissors")
+                else if (you.playerChoice == "spock" && opponent.playerChoice == "scissors")
                 {
-                    Console.WriteLine("Spock smashes scissors, player 1 wins this round");
-                    player1.numberOfMatchWins++;
+                    Console.WriteLine("Spock smashes scissors, you win this round");
+                    you.numberOfMatchWins++;
                 }
-                else if (player1.playerChoice == "spock" && player2.playerChoice == "lizard")
+                else if (you.playerChoice == "spock" && opponent.playerChoice == "lizard")
                 {
-                    Console.WriteLine("Lizard poisons spock, player 2 wins this round");
-                    player2.numberOfMatchWins++;
+                    Console.WriteLine("Lizard poisons spock, your opponent wins this round");
+                    opponent.numberOfMatchWins++;
                 }
-            }
+            
         }
         
        
-        public void CalculatesGameWinner()
+        public bool CalculatesGameWinner(Player you, Player opponent)
         {
-            if (player1.numberOfMatchWins > player2.numberOfMatchWins)
+            if (you.numberOfMatchWins >= 2)
             {
-                Console.WriteLine("Player 1 wins!");
+                Console.WriteLine("You win the game!");
+                return false;
             }
-            else
+            if (opponent.numberOfMatchWins >= 2)
             {
-                Console.WriteLine("Player 2 wins!");
+                Console.WriteLine("Your opponent wins the game!");
+                return false;
             }
+            return true;
         }
-    }
+    }   
 }

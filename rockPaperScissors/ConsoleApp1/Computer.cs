@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class Computer:Player
+    class Computer : Player
     {
         //member variables
 
@@ -14,9 +14,9 @@ namespace ConsoleApp1
         //constructor
         public Computer()
         {
-
+            
         }
-
+   
 
         //methods
         public override string MakesChoice()

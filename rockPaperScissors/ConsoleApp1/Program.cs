@@ -17,8 +17,26 @@ namespace ConsoleApp1
             Console.WriteLine("4 = lizard");
             Console.WriteLine("5 = spock");
 
+            // Define game
+            Game gm = new Game();
 
-            Game game1 = new Game();
+            // Decide if I am playing against human or computer
+            Player opponent = new Player();
+            opponent = gm.DetermineOpponent();
+
+            // You
+            Player you = new Player();
+
+            // Run the game until you or the opponent wins 2 times
+
+            while (gm.CalculatesGameWinner(you, opponent))
+            {
+                Console.WriteLine("Your opponent chose: " + opponent.MakesChoice());
+                Console.WriteLine("You chose: " + you.MakesChoice());
+                gm.CompareGestures(you, opponent);
+            }
+
+            Console.ReadLine();
         }
     }
 }
